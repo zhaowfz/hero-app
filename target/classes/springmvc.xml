@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:beans="http://www.springframework.org/schema/beans"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!--json解析器配置-->
+    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+        <property name="messageConverters">
+            <list>
+                <bean id="stringConverter" class="org.springframework.http.converter.StringHttpMessageConverter">
+                    <property name="supportedMediaTypes">
+                        <list>
+                            <!-- 这里顺序不能反，一定先写text/html,不然ie下出现下载提示 -->
+                            <value>text/html;charset=UTF-8</value>
+                            <value>application/json;charset=UTF-8</value>
+                            <value>text/plain;charset=UTF-8</value>
+                        </list>
+                    </property>
+                </bean>
+                <bean id="jsonConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+                    <property name="supportedMediaTypes">
+                        <list>
+                            <!-- 这里顺序不能反，一定先写text/html,不然ie下出现下载提示 -->
+                            <value>text/html;charset=UTF-8</value>
+                            <value>application/json;charset=UTF-8</value>
+                            <value>text/plain;charset=UTF-8</value>
+                        </list>
+                    </property>
+                </bean>
+            </list>
+        </property>
+    </bean>
+    <!-- 启动Spring MVC的注解功能，完成请求和注解POJO的映射 -->
+    <mvc:annotation-driven />
+    <!-- 自动扫描该包，使SpringMVC认为包下用了@controller注解的类是控制器 -->
+    <context:component-scan base-package="com.cn.controller" />
+    <!--静态资源访问-->
+    <mvc:resources mapping="/img/**" location="/img/"></mvc:resources>
+    <mvc:resources mapping="/my-jquery-plug/**" location="/my-jquery-plug/"></mvc:resources>
+    <mvc:resources mapping="/bootstrap3/dist/**" location="/bootstrap3/dist/"></mvc:resources>
+
+    <!-- 定义跳转的文件的前后缀 ，视图模式配置jsp -->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <!-- 这里的配置我的理解是自动给后面action的方法return的字符串加上前缀和后缀，变成一个 可用的url地址 -->
+        <property name="prefix" value="/WEB-INF/views/"/>
+        <property name="suffix" value=".jsp"/>
+        <property name="order" value="1"/>
+    </bean>
+
+    <!-- freemarker的配置 -->
+    <bean id="freemarkerConfig" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
+        <property name="templateLoaderPath" value="/WEB-INF/views/" />
+        <property name="defaultEncoding" value="utf-8" />
+        <property name="freemarkerSettings">
+            <props>
+                <prop key="template_update_delay">10</prop>
+                <prop key="locale">zh_CN</prop>
+                <prop key="datetime_format">yyyy-MM-dd</prop>
+                <prop key="date_format">yyyy-MM-dd</prop>
+                <prop key="number_format">#.##</prop>
+            </props>
+        </property>
+    </bean>
+
+    <!-- FreeMarker ftl视图解析   如返回student。。在这里配置后缀名ftl和视图解析器。。-->
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
+
+        <property name="viewClass" value="org.springframework.web.servlet.view.freemarker.FreeMarkerView"></property>
+        <property name="suffix" value=".ftl" />
+        <property name="contentType" value="text/html;charset=utf-8" />
+        <property name="exposeRequestAttributes" value="true" />
+        <property name="exposeSessionAttributes" value="true" />
+        <property name="exposeSpringMacroHelpers" value="true" />
+        <property name="order" value="0"/>
+    </bean>
+
+    <!--html 视图配置-->
+    <beans:bean id="freemarkerConfiguration" class="org.springframework.beans.factory.config.PropertiesFactoryBean"></beans:bean>
+    <beans:bean id="viewResolverHtml" class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
+        <beans:property name="exposeRequestAttributes" value="true" />
+        <beans:property name="exposeSessionAttributes" value="true" />
+        <beans:property name="viewClass">
+            <beans:value>org.springframework.web.servlet.view.freemarker.FreeMarkerView</beans:value>
+        </beans:property>
+        <beans:property name="cache">
+            <beans:value>true</beans:value>
+        </beans:property>
+        <beans:property name="suffix">
+            <beans:value>.html</beans:value>
+        </beans:property>
+        <beans:property name="contentType">
+            <beans:value>text/html; charset=UTF-8</beans:value>
+        </beans:property>
+        <beans:property name="order">
+            <beans:value>0</beans:value>
+        </beans:property>
+    </beans:bean>
+
+    <!-- 配置文件上传，如果没有使用文件上传可以不用配置，当然如果不配，那么配置文件中也不必引入上传组件包 -->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <!-- 默认编码 -->
+        <property name="defaultEncoding" value="utf-8"/>
+        <!-- 文件大小最大值 -->
+        <property name="maxUploadSize" value="10485760000"/>
+        <!-- 内存中的最大值 -->
+        <property name="maxInMemorySize" value="40960"/>
+    </bean>
+
+
+    <!-- aop 日志管理 -->
+    <!--<aop:config>-->
+    <!--<aop:pointcut expression="execution(* com.cn.*.*(..))" id="p1" />-->
+    <!--<aop:aspect ref = "transaction">-->
+    <!--<aop:before method="startTransaction" pointcut-ref="p1" />-->
+    <!--<aop:after-returning method="commitTransaction" pointcut-ref="p1"/>-->
+    <!--</aop:aspect>-->
+    <!--</aop:config>-->
+</beans>

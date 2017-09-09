@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cn.dao.UserDao">
+    <resultMap id="BaseResultMap" type="com.cn.beans.User">
+        <id column="user_no" jdbcType="VARCHAR" property="userNo"/>
+        <result column="user_name" jdbcType="VARCHAR" property="userName"/>
+        <result column="user_password" jdbcType="VARCHAR" property="userPassword"/>
+        <result column="user_head_img" jdbcType="VARCHAR" property="userHeadImg"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        user_no, user_name, user_password, user_head_img
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from t_user
+        where user_no = #{userNo,jdbcType=VARCHAR}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+        delete from t_user
+        where user_no = #{userNo,jdbcType=VARCHAR}
+    </delete>
+    <insert id="insert" parameterType="com.cn.beans.User">
+        insert into t_user (user_no, user_name, user_password,
+        user_head_img)
+        values (#{userNo,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, #{userPassword,jdbcType=VARCHAR},
+        #{userHeadImg,jdbcType=VARCHAR})
+    </insert>
+    <insert id="insertSelective" parameterType="com.cn.beans.User">
+        insert into t_user
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="userNo != null">
+                user_no,
+            </if>
+            <if test="userName != null">
+                user_name,
+            </if>
+            <if test="userPassword != null">
+                user_password,
+            </if>
+            <if test="userHeadImg != null">
+                user_head_img,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="userNo != null">
+                #{userNo,jdbcType=VARCHAR},
+            </if>
+            <if test="userName != null">
+                #{userName,jdbcType=VARCHAR},
+            </if>
+            <if test="userPassword != null">
+                #{userPassword,jdbcType=VARCHAR},
+            </if>
+            <if test="userHeadImg != null">
+                #{userHeadImg,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.cn.beans.User">
+        update t_user
+        <set>
+            <if test="userName != null">
+                user_name = #{userName,jdbcType=VARCHAR},
+            </if>
+            <if test="userPassword != null">
+                user_password = #{userPassword,jdbcType=VARCHAR},
+            </if>
+            <if test="userHeadImg != null">
+                user_head_img = #{userHeadImg,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where user_no = #{userNo,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.cn.beans.User">
+        update t_user
+        set user_name = #{userName,jdbcType=VARCHAR},
+        user_password = #{userPassword,jdbcType=VARCHAR},
+        user_head_img = #{userHeadImg,jdbcType=VARCHAR}
+        where user_no = #{userNo,jdbcType=VARCHAR}
+    </update>
+</mapper>
