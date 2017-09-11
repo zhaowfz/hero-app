@@ -9,7 +9,7 @@
 <html>
 <head>
     <title></title>
-    <link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/bootstrap3/dist/css/bootstrap.min.css">
 
     <link type="text/css" rel="stylesheet" href="/my-jquery-plug/date-special-effects/css/jquery.range.css" />
     <link type="text/css" rel="stylesheet" href="/my-jquery-plug/date-special-effects/css/css.css" />
@@ -18,13 +18,16 @@
     <script type="application/javascript" src="/my-jquery-plug/date-special-effects/js/jquery.range.js"></script>
 </head>
 <body>
-   我是jsp的，你是不是找不到ftl的good，哈哈！
    <div class="time clearfix">
        <div class="btn-group year_group fl">
            <button data-toggle="dropdown" class="btn dropdown-toggle" type="button">
                <span id="year">2017年</span><i class="caret"></i>
            </button>
            <ul class="dropdown-menu">
+               <li><a href="#">2021年</a></li>
+               <li><a href="#">2020年</a></li>
+               <li><a href="#">2019年</a></li>
+               <li><a href="#">2018年</a></li>
                <li><a href="#">2017年</a></li>
                <li><a href="#">2016年</a></li>
                <li><a href="#">2015年</a></li>

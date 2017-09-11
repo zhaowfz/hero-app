@@ -13,6 +13,7 @@
     <listener>
         <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
     </listener>
+
     <!-- Spring和mybatis的配置文件 -->
     <context-param>
         <param-name>contextConfigLocation</param-name>
