@@ -1,0 +1,13 @@
+footer{
+    background: #2b4954;
+    background-size: 100%;
+    min-height: 100px;
+    height: auto;
+    max-height: 130px;
+    width: 100%;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    position: absolute;
+}
