@@ -1,0 +1,281 @@
+.body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td
+{
+margin:0;padding:0;
+}
+table /* è®¾ç½®table çš„æ ·å¼*/
+{
+border-collapse:collapse;
+border-spacing:0;
+}
+fieldset, img
+{
+border:0;
+}
+em, strong
+{
+font-style:normal;
+font-weight:normal;
+}
+li
+{
+list-style:none;
+}
+h1, h2, h3, h4, h5, h6
+{
+font-size:100%;
+font-weight:lighter;
+}
+body, input, button, textarea
+{
+font-size:12px;
+color: #fff;
+font-family:'OpenSans','Microsoft Yahei',Arial, Helvetica, sans-serif;
+}
+a{ text-decoration:none;outline:none;}
+a:hover{ cursor:pointer;}
+th, td{vertical-align:top;}
+.clear{
+	clear: both;
+	
+}
+@font-face {
+font-family: 'OpenSans';
+font-weight: normal;
+font-style: normal;
+}
+.zh{
+	font-family: "FZLTXH";
+}
+
+@font-face{ 
+	font-family: 'FZLTXH';
+}
+html{
+	background: #1b3b48;
+}
+body{
+	width: 100%;
+	margin: 0 auto;
+	display: block;
+	background: #fff;
+}
+
+nav{
+	z-index: 999;
+	/*width: 1200px;*/
+	width: 100%;
+	margin:0 auto;
+	padding-top: 35px;
+	height: 45px;
+	display: block;
+	
+}
+nav .logo{
+	width: 205px;
+	height: 45px;
+	display: inline-block;
+	float: left;
+	background: url(/img/1.png) no-repeat;
+}
+nav .logo span{
+	float:right;
+	margin-right: 5px;
+	color:#fff;
+	font-size: 24px;
+	line-height: 45px;
+
+}
+nav .nav{
+	
+	margin-left: 35px;
+	float: left;
+
+}
+nav .nav .nav_item{
+	width: 100px;
+	height: 40px;
+	display: inline-block;
+	text-align: center;
+	line-height: 42px;
+	font-size: 18px;
+	color: #fff;
+	/*border: 1px solid #1a3849;*/
+	border: 1px solid rgba(255,255,255,0);
+	border-radius:30px;
+	
+}
+
+nav .nav .nav_item:hover{
+	border: 1px solid #6cddff;	
+	background: #254d5e;
+	/*background: url(../images/hover.png) no-repeat center;*/
+}
+nav .lang{
+	
+	float: right;
+}
+nav .lang span{
+	color: #787370;
+}
+nav .lang a{
+	margin-left: 5px;
+	margin-right: 5px;
+	height: 15px;
+	line-height: 15px;
+	font-size: 12px;
+	margin-top: 20px;
+	display: inline-block;
+	color:#fff;
+	opacity: 0.5;
+	text-align: center;
+}
+nav .lang a:hover{
+	color: #fff;
+	opacity: 1;
+}
+nav .lang a.selected{
+	color: #fff;
+	opacity: 1;
+}
+
+/*æ¸¸æˆä¸­å¿ƒä¸‹æ‹‰èœå•*/
+#game{
+	position: relative;
+	overflow: hidden;
+}
+#squareG{
+	width: 0;
+	height: 0;
+	border-right:10px solid transparent;
+	border-left: 10px solid transparent;
+	border-bottom: 10px solid #fff;
+	position: absolute;
+	top: -10px;
+	left: 40%;
+}
+.select_more_G{
+	width: 120px;
+	height: auto;
+	border-radius:5px;
+	position: absolute;
+	left: -10px;
+	top: 35px;
+	background:#fff;
+	opacity: 0.8;
+	text-align: center;
+	color: #000;
+	font-size: 16px;
+	display: none;
+	z-index: 999;
+}
+.select_more_G ul{
+	padding: 5px 10px;
+}
+.select_more_G ul .no_bottomline{
+	border-bottom: none;
+}
+.select_more_G ul li{
+	height: 39px;
+	line-height: 40px;
+	border-bottom: 1px solid #eee;
+}
+#game .select_more_G a{
+	color:#000;
+}
+
+/*æ›´å¤šäº§å“ä¸‹æ‹‰èœå•*/
+#more{
+	position: relative;
+	overflow: hidden;
+}
+.select_more{
+	width: 120px;
+	height: auto;
+	border-radius:5px;
+	position: absolute;
+	left: -10px;
+	top: 35px;
+	background:#fff;
+	opacity: 0.8;
+	text-align: center;
+	color: #000;
+	font-size: 16px;
+	display: none;
+	z-index: 999;
+}
+#square{
+	width: 0;
+	height: 0;
+	border-right:10px solid transparent;
+	border-left: 10px solid transparent;
+	border-bottom: 10px solid #fff;
+	position: absolute;
+	top: -10px;
+	left: 40%;
+}
+.select_more ul{
+	padding: 5px 10px;
+}
+.select_more ul .no_bottomline{
+	border-bottom: none;
+}
+.select_more ul li{
+	height: 39px;
+	line-height: 40px;
+	border-bottom: 1px solid #eee;
+}
+#more .select_more a{
+	color:#000;
+}
+
+
+
+
+footer{
+	width: 100%;
+	display: block;
+	background: #606470;
+	margin-bottom: 0;
+}
+.foot{
+	width: 1100px;
+	margin: 0 auto;
+	height: 70px;
+}
+.foot .info{
+	
+	font-size: 14px;
+	line-height: 70px;
+}
+.info p{
+	float: left;
+}
+.info p a{
+	color:#fff;
+}
+.info span{
+	float: right;
+}
+@media only screen and (min-width: 1000px)and (max-width: 1200px){
+    .foot{
+    	width: 1000px;
+    }
+}
+
+/*abouté¡µé¢ å•†åŠ¡åˆä½œ*/
+.cooperate{
+	width: 276px !important;
+	text-align: center;
+	position: relative;
+}
+.cooperate_text{
+	position: absolute;
+	left: 72px;
+	top: 24px;
+	font-size: 16px;
+	color: #fff;
+}
+.cooperate_text:hover{
+	cursor: pointer;
+	text-decoration: underline;
+}

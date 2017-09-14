@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>滚你个茄子</title>
+    <link rel="stylesheet" href="/my-jquery-plug/sky-chezi-effects/cz/index.css">
+    <link rel="stylesheet" href="/my-jquery-plug/sky-chezi-effects/cz/common2.css">
+    <link rel="stylesheet" href="/my-jquery-plug/sky-chezi-effects/cz/common.css">
+    <script type="text/javascript" src="/my-jquery-plug/js/jquery-2.2.4.min.js"></script>
+</head>
+<body>
+<div id="fullpage">
+    <!-- 第一屏section1 -->
+    <div class="section" id="section1">
+        <!-- 一闪一闪亮晶晶 -->
+        <div id="particles-js"></div>
+    </div>
+</div>
+<script type="text/javascript" src="/my-jquery-plug/sky-chezi-effects/cz/particles.min.js"></script>
+<script type="text/javascript" src="/my-jquery-plug/sky-chezi-effects/cz/index.js"></script>
+<script type="text/javascript" src="/my-jquery-plug/sky-chezi-effects/cz/noscroll.js"></script>
+<script type="text/javascript" src="/my-jquery-plug/sky-chezi-effects/cz/stats.js" name="MTAH5" sid="500316606" cid="500316609" ></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        // 第一屏 背景图居中
+        var w = $(document).width() || $(window).width();
+
+        var tw = (w-550)/2;
+        var ttw = (w-420)/2;
+
+        margincenter(".head");
+
+        function margincenter(id){
+            var w = $(document).width() || $(window).width();
+            var idw = $(id).width();
+            var l = ( w - idw )/2;
+            $(id).css('left', l +'px');
+
+        }
+        // 遮罩层
+        $("#cover").slideUp('2000');
+
+        // 第一屏占全屏
+        //var h = $(window).height();
+        var h = document.body.clientHeight;
+        if(h<800){
+            $('#section1').css({height: h});
+        }else{
+            $('#section1').css({height: 800});
+        }
+
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>离子猩球</title>
+    <link rel="stylesheet" media="screen" href="/my-jquery-plug/sky-chezi-effects/default/style.css">
+    <script type="application/javascript" src="/my-jquery-plug/sky-chezi-effects/default/particles.min.js"></script>
+
+
+</head>
+<body>
+
+<!-- count particles -->
+<!--<div class="count-particles" style="height: 50px">-->
+    <!--<span class="js-count-particles">&#45;&#45;</span> particles-->
+<!--</div>-->
+
+<!-- particles.js container -->
+<div id="particles-js" style="height: 200px"></div>
+<script type="application/javascript" src="/my-jquery-plug/sky-chezi-effects/default/app.js"></script>
+<script type="application/javascript" src="/my-jquery-plug/sky-chezi-effects/default/stats.js"></script>
+<script>
+    var count_particles, stats, update;
+    stats = new Stats;
+//    stats.setMode(2);
+    stats.domElement.style.position = 'absolute';
+    stats.domElement.style.left = '0px';
+    stats.domElement.style.top = '0px';
+    document.body.appendChild(stats.domElement);
+    count_particles = document.querySelector('.js-count-particles');
+    update = function() {
+        stats.begin();
+        stats.end();
+//        if (window.pJSDom[0].pJS.particles && window.pJSDom[0].pJS.particles.array) {
+//            count_particles.innerText = window.pJSDom[0].pJS.particles.array.length;
+//        }
+        requestAnimationFrame(update);
+    };
+    requestAnimationFrame(update);
+</script>
+
+</body>
