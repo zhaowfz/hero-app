@@ -1,0 +1,71 @@
+* {margin: 0px;padding: 0px}
+
+body{
+    background-image: url("/img/mg.jpg");
+    -ms-background-position-y: 100%;
+    background-origin: content-box;
+    min-height: 100%;
+}
+
+#session-login{
+    border: solid 1px #00FF00;
+    border-radius:10px 10px;
+    margin-left: 35%;
+    margin-top:15% ;
+    align-content: center;
+    height: 30%;
+    width: 30%;
+    background-image: url("/img/mn.jpg");
+    box-shadow:-10px 0px 8px #f00,0px -10px 8px #000,0px 2px 8px #9e038a,10px 0px 8px #0f0;/*阴影外阴影与外发*/
+    opacity:0.6;
+    filter:alpha(opacity=40); /* 针对 IE8 以及更早的版本 */
+}
+#session-login header{
+   border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    height: 40px;
+    min-height: 40px;
+    width: 100%;
+    min-width: 100%;
+    align-content: center;
+    text-align: center;
+    background-image: url("/img/somk.jpg");
+    background-position-x: 100%;
+    opacity:0.8;
+    filter:alpha(opacity=40); /* 针对 IE8 以及更早的版本 */
+}
+#session-login div{
+    min-height: 160px;
+    height: 160px;
+    width: 100%;
+    min-width: 100%;
+    align-content: center;
+    opacity:0.8;
+    filter:alpha(opacity=40); /* 针对 IE8 以及更早的版本 */
+}
+#cont_login{
+    margin-left: 10px;
+}
+
+.mtop{
+    margin-top: 5px;
+}
+button{
+    box-shadow:-2px 0px 8px #a9ff4c,0px -2px 8px #202c7b,0px 2px 8px #208329,2px 0px 8px #ff3f55;/*阴影外阴影与外发*/
+}
+input{
+    width: 200px;
+    box-shadow: inset 0px 0px 3px red;
+}
+#footer{
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    width: 100%;
+    min-width: 100%;
+    height: 50px;
+    min-height: 50px;
+    align-content: center;
+    text-align: center;
+    opacity:0.8;
+    filter:alpha(opacity=40); /* 针对 IE8 以及更早的版本 */
+}

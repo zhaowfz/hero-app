@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en,zh">
+<head>
+    <meta charset="UTF-8">
+    <title>德鲁</title>
+    <link href="/bootstrap3/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="../../my-jquery-plug/loggin/css.css" rel="stylesheet" type="text/css">
+    <script type="application/javascript" src="../../my-jquery-plug/js/jquery-2.2.4.min.js"></script>
+    <script type="application/javascript" src="/bootstrap3/dist/js/bootstrap.min.js"></script>
+    <script type="application/javascript" src="../../my-jquery-plug/loggin/js.js"></script>
+
+</head>
+<body>
+<section id="session-login">
+    <header>一饮千愁解，万刃消怨难。</header>
+    <div>
+        <form class="bs-example bs-example-form" role="form" id="form1">
+            <span class="input-group" id="cont_login">
+                <sapn><input type="text" class="form-control col-xs-2 mtop" value="" placeholder="用户名"/></sapn>
+                <span><input type="password" class="form-control col-xs-2 mtop" value="" placeholder="密 码"/></span>
+                <span><input type="text" id="code_input" value="" autocomplete="off" class="form-control col-xs-2 mtop" placeholder="验证码"/></span>
+                <span class="mtop">
+                    <span id="v_container"></span>
+                </span>
+            </span>
+        </form>
+    </div>
+    <div class="pull-right" id="footer">
+        <button id="my_button" class="btn btn-group-lg" style="margin-right: 0px;width: 30%;height: 50px">登 录</button>
+    </div>
+</section>
+
+<script src="/my-jquery-plug/GVerify-verification-effects/gVerify.js"></script>
+<script>
+    var verifyCode = new GVerify("v_container");
+
+    document.getElementById("my_button").onclick = function(){
+        var res = verifyCode.validate(document.getElementById("code_input").value);
+        if(res){
+            alert("验证正确");
+        }else{
+            alert("验证码错误");
+        }
+    }
+</script>
+</body>
+</html>
